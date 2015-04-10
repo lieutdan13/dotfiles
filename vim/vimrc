@@ -1,0 +1,5 @@
+" Include default global config
+" source /etc/vimrc
+
+" 1,000 lines for copy buffer
+set viminfo='20,<1000,s1000
