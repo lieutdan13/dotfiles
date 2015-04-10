@@ -1,5 +1,6 @@
 - clean: []
 - link:
     ~/.vimrc: vim/vimrc
+    ~/.gitconfig: git/gitconfig
 - shell:
   - git submodule update --init --recursive

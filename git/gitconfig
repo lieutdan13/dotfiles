@@ -1,0 +1,8 @@
+[alias]
+	br = branch -vv
+	dc = diff --cached
+	rem = remote -vv
+
+[user]
+	name = Dan Schaefer
+	email = dan@schaeferzone.net
