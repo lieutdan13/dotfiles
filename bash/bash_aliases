@@ -1,0 +1,2 @@
+
+alias checkUpdates='echo "Updating Apt Sources" && sudo apt-get update >/dev/null && echo "Getting List of Packages to Update" && sudo apt-get dist-upgrade -s | grep "^Inst" | sort && if [ -f /var/run/reboot-required ]; then echo "reboot required"; fi'

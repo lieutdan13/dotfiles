@@ -1,6 +1,8 @@
 - clean: []
 - link:
-    ~/.vimrc: vim/vimrc
+    ~/.bash_aliases: bash/bash_aliases
+    ~/.dotfiles: ''
     ~/.gitconfig: git/gitconfig
+    ~/.vimrc: vim/vimrc
 - shell:
   - git submodule update --init --recursive
