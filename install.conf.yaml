@@ -1,5 +1,8 @@
 - clean: []
 - link:
+    ~/.atom/config.cson: atom/config.cson
+    ~/.atom/keymap.cson: atom/keymap.cson
+    ~/.atom/snippets.cson: atom/snippets.cson
     ~/.bash_aliases: bash/bash_aliases
     ~/.dotfiles: ''
     ~/.gitconfig: git/gitconfig
