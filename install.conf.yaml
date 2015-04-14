@@ -6,6 +6,7 @@
     ~/.bash_aliases: bash/bash_aliases
     ~/.dotfiles: ''
     ~/.gitconfig: git/gitconfig
+    ~/.putty/sessions/Default%20Settings: putty/sessions/Default%20Settings
     ~/.vimrc: vim/vimrc
 - shell:
-  - git submodule update --init --recursive
+  - [git submodule update --init --recursive, Installing submodules]
