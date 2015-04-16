@@ -2,6 +2,7 @@
 	br = branch -vv
 	dc = diff --cached
 	rem = remote -vv
+	st = status -sb
 
 [user]
 	name = Dan Schaefer
