@@ -19,3 +19,4 @@
   whitespace:
     removeTrailingWhitespace: false
     ignoreWhitespaceOnlyLines: true
+    ensureSingleTrailingNewline: false
