@@ -7,3 +7,5 @@
 [user]
 	name = Dan Schaefer
 	email = dan@schaeferzone.net
+[core]
+	editor = vim
