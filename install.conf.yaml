@@ -4,6 +4,7 @@
     ~/.atom/keymap.cson: atom/keymap.cson
     ~/.atom/snippets.cson: atom/snippets.cson
     ~/.bash_aliases: bash/bash_aliases
+    ~/.bashrc: bash/bashrc
     ~/.dotfiles: ''
     ~/.gitconfig: git/gitconfig
     ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml: gconf/gnome-terminal.xml
