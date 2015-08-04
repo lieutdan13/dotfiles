@@ -28,3 +28,8 @@ fi
 alias checkUpdates='echo "Updating Apt Sources" && sudo apt-get update >/dev/null && echo "Getting List of Packages to Update" && sudo apt-get dist-upgrade -s | grep "^Inst" | sort && if [ -f /var/run/reboot-required ]; then echo "reboot required"; fi'
 alias eth0-restart='sudo ifdown eth0 && sudo ifup eth0'
 alias randomPassword="cat /dev/urandom | tr -dc 'a-zA-Z0-9!@#$%^&*(){}?><-_' | fold -w 24 | head -n 4"
+
+# allows us to run a command in the background
+null_command() {
+    $1 >> /dev/null 2>&1 &
+}
