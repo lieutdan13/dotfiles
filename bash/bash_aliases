@@ -193,7 +193,7 @@ lxc_da() {
 }
 
 # [ssh]
-alias ssh='ssh -i $HOME/.ssh/id_ed25519 $1'
+#alias ssh='ssh -i $HOME/.ssh/id_ed25519 $1'
 alias ssh_onshift='ssh -i $HOME/.ssh/id_onshift $1'
 
 # [sysadmin]
@@ -239,11 +239,21 @@ function check_sockets {
 }
 
 function gen_passwd_az {
-    cat /dev/urandom| tr -dc 'a-zA-Z0-9' | fold -w 16| head -n 4
+    if [ -z "$1" ]; then
+        passlen=16
+    else
+        passlen=$1
+    fi
+    cat /dev/urandom| tr -dc 'a-zA-Z0-9' | fold -w $passlen | head -n 4
 }
 
 function gen_passwd_safe {
-    cat /dev/urandom| tr -dc 'a-zA-Z0-9!@#$%^&*(){}?><-_' | fold -w 24| head -n 4
+    if [ -z "$1" ]; then
+        passlen=24
+    else
+        passlen=$1
+    fi
+    cat /dev/urandom| tr -dc 'a-zA-Z0-9!@#$%^&*(){}?><-_' | fold -w $passlen | head -n 4
 }
 
 # allows us to run a command in the background
