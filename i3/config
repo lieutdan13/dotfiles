@@ -116,6 +116,11 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        bindsym Control+h resize shrink width 1 px or 1 ppt
+        bindsym Control+j resize grow height 1 px or 1 ppt
+        bindsym Control+k resize shrink height 1 px or 1 ppt
+        bindsym Control+l resize grow width 1 px or 1 ppt
+
         # same bindings, but for the arrow keys
         bindsym 113 resize shrink width 10 px or 10 ppt
         bindsym 116 resize grow height 10 px or 10 ppt
@@ -130,6 +135,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+Shift+P exec i3lock -n -c 000000
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 3%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 3%- #decrease sound volume
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle # mute sound
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
