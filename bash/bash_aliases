@@ -177,6 +177,7 @@ function sba {
 
 # [git]
 alias g='git'
+alias gl='git log --stat'
 
 alias gpom='git pull --rebase origin master'
 alias gpum='git pull --rebase upstream master'
@@ -188,10 +189,27 @@ alias gpuod='git push origin develop'
 alias grmmerged='git branch -D `git branch --merged | grep -v \* | xargs`'
 
 # [lxc]
-alias lxc-ls='lxc-ls --fancy'
+alias lxc-ls='sudo lxc-ls --fancy'
 
 lxc_da() {
     for i in $(sudo lxc-ls); do sudo lxc-stop -n $i; sudo lxc-destroy -n $i; done
+}
+
+Lxc_create() {
+    name=$1
+    if [[ -z $name ]]; then
+        cat <<EOF
+Lxc_create container_name
+default is to use ubuntu template
+EOF
+else
+    container_template=ubuntu
+    auth_keys=".ssh/authorized_keys"
+    default_packages="python,git"
+    sudo lxc-create -t $container_template -n $name -- -u $USER -S $HOME/$auth_keys --packages $default_packages
+    sudo lxc-start -d -n $name
+fi
+
 }
 
 # [ssh]
@@ -220,6 +238,17 @@ Ovs_del_brs() {
     for i in $(sudo ovs-vsctl show | grep Bridge | awk '{ print $2}'| tr -d \"); 
         do sudo ovs-vsctl del-br $i ; 
     done
+}
+
+# [known_hosts]
+function forget_known_host() {
+    h=$1
+    i=`gethostip $h | awk '{print $2}'`
+    f=`readlink -f ~/.ssh/known_hosts`
+    ssh-keygen -f "$f" -R $h
+    if [ "x$i" != "x" ]; then
+        ssh-keygen -f "$f" -R $i
+    fi
 }
 
 # [tmux]
