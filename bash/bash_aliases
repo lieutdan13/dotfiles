@@ -190,6 +190,7 @@ alias grmmerged='git branch -D `git branch --merged | grep -v \* | xargs`'
 
 # [lxc]
 alias lxc-ls='sudo lxc-ls --fancy'
+alias lxc-start='sudo lxc-start -d'
 
 lxc_da() {
     for i in $(sudo lxc-ls); do sudo lxc-stop -n $i; sudo lxc-destroy -n $i; done
