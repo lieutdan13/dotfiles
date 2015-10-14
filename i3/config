@@ -12,6 +12,9 @@ font pango: PragmataPro 9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Disable F11
+bindsym F11 exec --no-startup-id /bin/true
+
 # start a terminal
 #bindsym $mod+Return exec urxvt
 bindsym $mod+Return exec i3-sensible-terminal
