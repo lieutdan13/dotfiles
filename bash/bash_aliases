@@ -1,6 +1,6 @@
 # new shell commands
 
-if [ -x /usr/bin/xset ]; then
+if [ -x /usr/bin/xset ] && [ "x$DISPLAY" != "x" ]; then
     xset r rate 250 35
 fi
 
@@ -206,8 +206,9 @@ EOF
 else
     container_template=ubuntu
     auth_keys=".ssh/authorized_keys"
-    default_packages="python,git"
+    default_packages="python,git,curl,bash-completion,ca-certificates"
     sudo lxc-create -t $container_template -n $name -- -u $USER -S $HOME/$auth_keys --packages $default_packages
+    echo "%$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /var/lib/lxc/$name/rootfs/etc/sudoers.d/$USER
     sudo lxc-start -d -n $name
 fi
 
@@ -216,6 +217,17 @@ fi
 # [ssh]
 #alias ssh='ssh -i $HOME/.ssh/id_ed25519 $1'
 alias ssh_onshift='ssh -i $HOME/.ssh/id_onshift $1'
+
+SSH_ENV="$HOME/.ssh/env"
+start_agent() {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+start_agent 2>&1 > /dev/null
 
 # [sysadmin]
 Sysadmin_au() {
@@ -231,6 +243,11 @@ EOF
         curl https://github.com/$u.keys | sudo -u $u tee /home/$u/.ssh/authorized_key
     fi
 
+}
+
+start_wicd() {
+    sudo service wicd restart
+    wicd-curses
 }
 
 # [ovs]
