@@ -3,13 +3,7 @@
     ~/.atom/config.cson: atom/config.cson
     ~/.atom/keymap.cson: atom/keymap.cson
     ~/.atom/snippets.cson: atom/snippets.cson
-    ~/.bash_aliases: bash/bash_aliases
-    ~/.dotfiles: ''
-    ~/.gitconfig: git/gitconfig
     ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml: gconf/gnome-terminal.xml
-    ~/.i3/config: i3/config
-    ~/.i3status.conf: i3/i3status.conf
     ~/.putty/sessions/Default%20Settings: putty/sessions/Default%20Settings
-    ~/.vimrc: vim/vimrc
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
